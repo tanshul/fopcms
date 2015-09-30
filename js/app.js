@@ -38,7 +38,7 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 .controller('AuthController', ['$scope', 'authService','$location', function($scope, authService,$location) {
 	$scope.logout = function() {		
 		authService.$unauth();
-		location.reload();
+		window.location.reload();
 	};
 	$scope.login = function() {
 		authService.$authWithPassword({
