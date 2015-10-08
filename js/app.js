@@ -12,7 +12,11 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 	$routeProvider.when('/newlist', {
 		templateUrl: 'partials/newlist.html',
 		controller: 'NewListController'
-	});  	
+	});
+	$routeProvider.when('/inbox', {
+		templateUrl: 'partials/inbox.html',
+		controller: 'MessageController'
+	});	  	
 	$routeProvider.when('/login', {
 		templateUrl: 'partials/login.html',
 		controller: 'AuthController'
@@ -32,6 +36,11 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 
 .factory('Submissions', ['$firebaseArray', function($firebaseArray) {
   var itemsRef = new Firebase('https://foh.firebaseio.com/submissions');
+  return $firebaseArray(itemsRef);
+}])
+
+.factory('Messages', ['$firebaseArray', function($firebaseArray) {
+  var itemsRef = new Firebase('https://foh.firebaseio.com/messages');
   return $firebaseArray(itemsRef);
 }])
 
@@ -157,6 +166,17 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
  	var authData = authService.$getAuth();
 	if (authData) {
   		$scope.items = Submissions;
+	}else{
+	 	$location.path('/login');
+	}
+
+}])
+
+.controller('MessageController', ['$scope', 'authService','$location','Messages','$filter', function($scope, authService,$location,Messages,$filter) {
+ 
+ 	var authData = authService.$getAuth();
+	if (authData) {
+  		$scope.items = Messages;
 	}else{
 	 	$location.path('/login');
 	}
