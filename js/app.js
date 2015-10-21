@@ -152,6 +152,13 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 	      	location.reload();
 		};		
 
+		// Remove item   
+		$scope.removeItem= function(item) {
+		  $scope.items.$remove(item).then(function(){
+		    alert('Deleted !!! what have you done !');
+		  });
+		};
+
 	}else{
 	 	$location.path('/login');
 	}
@@ -187,11 +194,12 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 {
   return function(input)
 {
-if(input == null){ return ""; } 
-  var _date = $filter('date')(new Date(input),'dd MMM yyyy');
-  return _date;
-};
+	if(input == null){ return ""; } 
+	  var _date = $filter('date')(new Date(input),'dd MMM yyyy');
+	  return _date;
+	};
 })
+
 .filter('timefilter', function($filter)
 {
   return function(input)
