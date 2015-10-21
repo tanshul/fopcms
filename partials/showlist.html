@@ -52,7 +52,7 @@
                 <th>Date Added &nbsp;&nbsp;&nbsp;<a href="" ng-click="sortType = 'dateadded'; sortReverse = !sortReverse" class="glyphicon glyphicon glyphicon glyphicon-sort-by-order" aria-hidden="true"></a></th>
                 </thead>
               <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:search" href="#/list/{{item.$id}}">
-                 <td>{{ item.name }}</td>
+                 <td>{{ item.name }} <a href="" ng-click="removeItem(item)" class="label label-danger deletebtn">Delete</a></td>
                  <td ng-show="address">{{ item.address }}</td>
                  <td ng-show="city">{{ item.city }}</td>
                  <td ng-show="category">{{ item.category }}</td>
@@ -67,20 +67,18 @@
                 <span class="label label-warning">Total Listed: {{items.length}}</span>
             </table>
             
-            //temp
-            
-            <table class="table table-striped table-bordered table-condensed">
+
+            <!--table class="table table-striped table-bordered table-condensed">
               <thead>
                 <th>Name</th>
-                <th ng-show="address">Address</th>
-                <th>Monday</th> 
-                <th>Tue</th
+                 <th>Monday</th> 
+                <th>Tue</th>
                 <th>Wed</th> 
                 <th>Thur</th>
                 <th>Fri</th>
                  </thead>
               <tr ng-repeat="item in items | filter:search" href="#/list/{{item.$id}}">
-                 <td>{{ item.name }}</td>
+                 <td>{{ item.name }} </td>
                  <td>{{ item.mon_start | timefilter}} -- {{ item.mon_end | timefilter }} </td>
                  <td>{{ item.tue_start | timefilter}} -- {{ item.tue_end | timefilter }} </td>
                  <td>{{ item.wed_start | timefilter}} -- {{ item.wed_end | timefilter }} </td>
@@ -89,7 +87,7 @@
                
                </tr>
                 <span class="label label-warning">Total Listed: {{items.length}}</span>
-            </table>            
+            </table-->            
         </div>
 
     </div>
