@@ -52,7 +52,7 @@
                 <th>Date Added &nbsp;&nbsp;&nbsp;<a href="" ng-click="sortType = 'dateadded'; sortReverse = !sortReverse" class="glyphicon glyphicon glyphicon glyphicon-sort-by-order" aria-hidden="true"></a></th>
                 </thead>
               <tr ng-repeat="item in items | orderBy:sortType:sortReverse | filter:search" href="#/list/{{item.$id}}">
-                 <td>{{ item.name }} <a href="" ng-click="removeItem(item)" class="label label-danger deletebtn">Delete</a></td>
+                 <td>{{ item.name }}</td>
                  <td ng-show="address">{{ item.address }}</td>
                  <td ng-show="city">{{ item.city }}</td>
                  <td ng-show="category">{{ item.category }}</td>
@@ -62,7 +62,11 @@
                  <td ng-show="phone2">{{ item.phone2 }}</td>
                  <td ng-show="fax">{{ item.fax }}</td>
                  <td ng-show="pubhol">{{ item.public }}</td>
-                <td>{{ item.dateadded | datefilter }}</td>
+                 <td>{{ item.dateadded | datefilter }}</td>
+                <td>
+                  <a href="/admin.html#/editlist/{{item.$id}}" class="label label-info editbtn">Edit</a> 
+                  <a href="" ng-click="removeItem(item)" class="label label-danger deletebtn">Delete</a>
+                </td>
                </tr>
                 <span class="label label-warning">Total Listed: {{items.length}}</span>
             </table>
