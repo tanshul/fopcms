@@ -71,6 +71,29 @@
                 <span class="label label-warning">Total Listed: {{items.length}}</span>
             </table>
 
+<<<<<<< 55addbacacb812794e22e3b7f6d3d790bdd1a959
+=======
+            <table class="table table-striped table-bordered table-condensed">
+              <thead>
+                <th>Name</th>
+                 <th>Monday</th> 
+                <th>Tue</th>
+                <th>Wed</th> 
+                <th>Thur</th>
+                <th>Fri</th>
+                 </thead>
+              <tr ng-repeat="item in items | filter:search" href="#/list/{{item.$id}}">
+                 <td>{{ item.name }}</td>
+                 <td>{{ item.mon_start | timefilter}} -- {{ item.mon_end | timefilter }} </td>
+                 <td>{{ item.tue_start | timefilter}} -- {{ item.tue_end | timefilter }} </td>
+                 <td>{{ item.wed_start | timefilter}} -- {{ item.wed_end | timefilter }} </td>
+                 <td>{{ item.thu_start | timefilter}} -- {{ item.thu_end | timefilter }} </td>
+                 <td>{{ item.fri_start | timefilter}} -- {{ item.fri_end | timefilter }} </td>
+               
+               </tr>
+                <span class="label label-warning">Total Listed: {{items.length}}</span>
+            </table>            
+>>>>>>> meh
         </div>
 
     </div>
