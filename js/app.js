@@ -8,7 +8,11 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 	$routeProvider.when('/showlist', {
 		templateUrl: 'partials/showlist.html',
 		controller: 'AddlistController'
-	});  
+	}); 
+	$routeProvider.when('/editlist/:itemId', {
+		templateUrl: 'partials/editlist.html',
+		controller: 'EditlistController'
+	}); 	 
 	$routeProvider.when('/newlist', {
 		templateUrl: 'partials/newlist.html',
 		controller: 'NewListController'
@@ -24,6 +28,10 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 	$routeProvider.otherwise({redirectTo: '/login'});
 }])
 
+
+ .value('fbURL', 'https://foh.firebaseio.com/items/')
+
+
 .factory('authService', ['$firebaseAuth',function($firebaseAuth) {
     var ref = new Firebase("https://foh.firebaseio.com");
     return $firebaseAuth(ref);
@@ -32,6 +40,16 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 .factory('Items', ['$firebaseArray', function($firebaseArray) {
   var itemsRef = new Firebase('https://foh.firebaseio.com/items');
   return $firebaseArray(itemsRef);
+}])
+
+.factory('GetItem', ['$firebaseArray','$firebaseObject', function($firebaseArray,$firebaseObject) {
+  var itemsRef = new Firebase('https://foh.firebaseio.com/items');
+    return {
+      get: function (listid) {
+      	return $firebaseObject(itemsRef.child( listid ));
+      }
+    }
+
 }])
 
 .factory('Submissions', ['$firebaseArray', function($firebaseArray) {
@@ -164,6 +182,48 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 	}
 
 }])
+
+.controller('EditlistController', ['$scope', 'authService','$location','$filter','$routeParams','GetItem', function($scope, authService,$location,$filter,$routeParams,GetItem) {
+ 	var authData = authService.$getAuth();
+	if (authData) {
+
+		$scope.item = GetItem.get($routeParams.itemId); 
+		/* Settings for timer directive */
+		$scope.ismeridian = true; //Show AM PM
+		$scope.hstep = 1;
+		$scope.mstep = 15;
+		$scope.options = {hstep: [1, 2, 3],mstep: [1, 5, 10, 15, 25, 30]};	
+
+    	$scope.editItem = function() {
+			$scope.item.mon_start = $filter('date')($scope.item.mon_start, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.mon_end = $filter('date')($scope.item.mon_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.tue_start = $filter('date')($scope.item.tue_start, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.tue_end = $filter('date')($scope.item.tue_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.wed_start = $filter('date')($scope.item.wed_start, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.wed_end = $filter('date')($scope.item.wed_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.thu_start = $filter('date')($scope.item.thu_start, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.thu_end = $filter('date')($scope.item.thu_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.fri_start = $filter('date')($scope.item.fri_start, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.fri_end = $filter('date')($scope.item.fri_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.sat_start = $filter('date')($scope.item.sat_start, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.sat_end = $filter('date')($scope.item.sat_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.sun_start = $filter('date')($scope.item.sun_start, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.sun_end = $filter('date')($scope.item.sun_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.item.dateadded = $filter('date')($scope.item.sun_end, "yyyy-MM-dd HH:mm:ss Z");    
+
+			//when was the entry updated
+			$scope.item.dateupdated = new Date();
+			console.log($scope.items);
+			$scope.item.$save();
+			alert("Listing updated, i hope you know what you are doing.");
+			$location.path('/showlist');
+		}		
+
+	}else{
+	 	$location.path('/login');
+	}  	
+}])
+
 
 .controller('NewListController', ['$scope', 'authService','$location','Submissions','$filter', function($scope, authService,$location,Submissions,$filter) {
   	//sort defaults

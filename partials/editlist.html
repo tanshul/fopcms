@@ -1,0 +1,164 @@
+<div class="container"> 
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2>Edit <i>{{item.name}}</i></h2>
+            <hr class="star-primary">
+        </div>
+    </div>
+    <div class="row">
+        <form ng-submit="editItem()" class="party-form ng-scope ng-pristine ng-invalid ng-invalid-required" role="form" ng-controller="EditlistController">
+          <div class="row">
+          <div class="col-md-8 col-md-offset-2">    
+            <div class="form-group ">
+              <label class="sr-only" for="partyName">Name *</label>
+              <input ng-model="item.name" type="text" class="form-control ng-pristine ng-invalid ng-invalid-required" id="partyName" required="">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="partyAddress">Address*</label>
+              <input type="text" ng-model="item.address" class="form-control input-sm ng-pristine ng-valid" id="partyAddress" required>
+            </div>  
+            <div class="form-group">
+              <label class="sr-only" for="partyCityTown">City/Town *</label>
+              <select ng-model="item.city" class="form-control input-sm ng-pristine ng-invalid ng-invalid-required" required="">
+                <option value="" disabled="" selected="">Choose City/Town</option>
+                <option value="Ba">Ba</option>
+                <option value="Labasa">Labasa</option>
+                <option value="Lautoka">Lautoka</option>                
+                <option value="Levuka">Levuka</option>                
+                <option value="Nadi">Nadi</option>                
+                <option value="Nausori">Nausori</option>                
+                <option value="Rakiraki">Rakiraki</option>
+                <option value="Savusavu">Savusavu</option>
+                <option value="Sigatoka">Sigatoka</option>
+                <option value="Suva">Suva</option>               
+                <option value="Taveuni">Taveuni</option>
+              </select>
+            </div>  
+            <div class="form-group">
+              <label class="sr-only" for="partyCategory">Category *</label>
+              <select ng-model="item.category" class="form-control input-sm ng-pristine ng-invalid ng-invalid-required" required="">
+                <option value="" disabled="" selected="">Choose Category</option> 
+                <option value="Authorities">Authorities</option>
+                <option value="Associations">Associations</option>
+                <option value="Business">Business</option>
+                <option value="Education">Education</option>
+                <option value="Finance">Finance</option>
+                <option value="Government and Diplomatic">Government and Diplomatic</option>
+                <option value="Legal">Legal</option>
+                <option value="Media">Media</option>        
+                <option value="Non Profit">Non Profit</option>
+                <option value="Public Service">Public Service</option>
+                <option value="Restaurants and Bars">Restaurants and Bars</option>
+                <option value="Retail">Retail</option>                                                    
+                <option value="Other">Other</option>
+              </select>
+            </div>   
+
+            <div class="form-group">
+              <label class="sr-only" for="phoneNumber">Phone number</label>
+              <input ng-model="item.phone" type="text" maxlength="7" class="form-control input-sm ng-pristine ng-valid" id="phoneNumber" value="{{item.phone}}" required>
+            </div>
+
+            <div class="form-group">
+              <label class="sr-only" for="phoneNumber2">Phone number 2 </label>
+              <input ng-model="item.phone2" maxlength="7" type="text" class="form-control input-sm ng-pristine ng-valid" id="phoneNumber2" placeholder="Another Phone No">
+            </div>    
+
+            <div class="form-group">
+              <label class="sr-only" for="fax">Fax</label>
+              <input ng-model="item.fax" type="text" maxlength="7" class="form-control input-sm ng-pristine ng-valid" id="fax" placeholder="Fax">
+            </div>  
+
+            <div class="form-group">
+              <label class="sr-only" for="Email">Email</label>
+              <input ng-model="item.email" type="text" class="form-control input-sm ng-pristine ng-valid" id="Email" placeholder="Email">
+            </div>  
+            <div class="form-group">
+              <label class="sr-only" for="website">Website</label>
+              <input ng-model="item.website" type="text" class="form-control input-sm ng-pristine ng-valid" id="website" placeholder="Website">
+            </div>      
+            <div class="form-group">
+              <label class="sr-only" for="Public">Public holidays</label>
+              <input ng-model="item.public" type="text" class="form-control input-sm ng-pristine ng-valid" id="Public" placeholder="Public Holidays">
+            </div>
+            <div class="form-group">
+              <label class="sr-only" for="Tags">Tags</label>
+              <input ng-model="item.tags" type="text" class="form-control input-sm ng-pristine ng-valid" id="Tags" placeholder="Tags: Nadi, resort, tourism, hospitality">
+            </div>            
+          </div><!-- / col-md-6 -->
+
+
+          <div class="col-md-8 col-md-offset-2 timeframes">
+            <div class="panel panel-default">
+                <div class="panel-heading">Monday                                     
+                    <label class="pull-right"><input ng-model="item.mon_closed" ng-init="checked=false" type="checkbox" class="ng-pristine ng-valid"> closed?</label>
+                </div>
+                <div class="panel-body">
+                    <timepicker ng-model="item.mon_start" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left"></timepicker>
+                    <timepicker ng-model="item.mon_end" mousewheel="false"hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left col-md-offset-2 "></timepicker>
+                </div>
+            </div>  
+            <div class="panel panel-default">
+                <div class="panel-heading">Tuesday                                    
+                    <label class="pull-right"><input ng-model="item.tue_closed" ng-init="checked=false" type="checkbox" class="ng-pristine ng-valid"> closed?</label>
+                </div>
+                <div class="panel-body">
+                    <timepicker ng-model="item.tue_start" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left"></timepicker>
+                    <timepicker ng-model="item.tue_end" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left col-md-offset-2 "></timepicker>
+                </div>
+            </div>  
+            <div class="panel panel-default">
+                <div class="panel-heading">Wednesday                                     
+                    <label class="pull-right"><input ng-model="item.wed_closed" ng-init="checked=false" type="checkbox" class="ng-pristine ng-valid"> closed?</label>
+                </div>
+                <div class="panel-body">
+                    <timepicker ng-model="item.wed_start" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left"></timepicker>
+                    <timepicker ng-model="item.wed_end" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left col-md-offset-2 "></timepicker>
+                </div>
+            </div>  
+            <div class="panel panel-default">
+                <div class="panel-heading">Thursday                                     
+                    <label class="pull-right"><input ng-model="item.thu_closed" ng-init="checked=false" type="checkbox" class="ng-pristine ng-valid"> closed?</label>
+                </div>
+                <div class="panel-body">
+                    <timepicker ng-model="item.thu_start" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left"></timepicker>
+                    <timepicker ng-model="item.thu_end" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left col-md-offset-2 "></timepicker>
+                </div>
+            </div>  
+            <div class="panel panel-default">
+                <div class="panel-heading">Friday                                     
+                    <label class="pull-right"><input ng-model="item.fri_closed" ng-init="checked=false" type="checkbox" class="ng-pristine ng-valid"> closed?</label>
+                </div>
+                <div class="panel-body">
+                    <timepicker ng-model="item.fri_start" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left"></timepicker>
+                    <timepicker ng-model="item.fri_end" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left col-md-offset-2 "></timepicker>
+                </div>
+            </div>  
+            <div class="panel panel-default">
+                <div class="panel-heading">Saturday                                     
+                    <label class="pull-right"><input ng-model="item.sat_closed" ng-init="checked=false" type="checkbox" class="ng-pristine ng-valid"> closed?</label>
+                </div>
+                <div class="panel-body">
+                    <timepicker ng-model="item.sat_start" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left"></timepicker>
+                    <timepicker ng-model="item.sat_end" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left col-md-offset-2 "></timepicker>
+                </div>
+            </div>  
+            <div class="panel panel-default">
+                <div class="panel-heading">Sunday                                     
+                    <label class="pull-right"><input ng-model="item.sun_closed" ng-init="checked=false" type="checkbox" class="ng-pristine ng-valid"> closed?</label>
+                </div>
+                <div class="panel-body">
+                    <timepicker ng-model="item.sun_start" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left"></timepicker>
+                    <timepicker ng-model="item.sun_end" mousewheel="false" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class="pull-left col-md-offset-2 "></timepicker>
+                </div>
+            </div>  
+            <button type="submit" class="col-md-4 col-md-offset-4 btn btn-primary" ng-disabled="form.$invalid">Update</button>
+
+          </div><!-- / col-md-8 -->
+
+
+        </div>
+
+        </form>
+    </div>
+</div>
