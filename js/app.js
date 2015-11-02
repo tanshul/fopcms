@@ -148,21 +148,21 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		
 		// save to fb
 		$scope.saveParty = function(){
-			$scope.newParty.mon_start = $filter('date')($scope.newParty.mon_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.mon_end = $filter('date')($scope.newParty.mon_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.tue_start = $filter('date')($scope.newParty.tue_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.tue_end = $filter('date')($scope.newParty.tue_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.wed_start = $filter('date')($scope.newParty.wed_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.wed_end = $filter('date')($scope.newParty.wed_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.thu_start = $filter('date')($scope.newParty.thu_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.thu_end = $filter('date')($scope.newParty.thu_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.fri_start = $filter('date')($scope.newParty.fri_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.fri_end = $filter('date')($scope.newParty.fri_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.sat_start = $filter('date')($scope.newParty.sat_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.sat_end = $filter('date')($scope.newParty.sat_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.sun_start = $filter('date')($scope.newParty.sun_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.sun_end = $filter('date')($scope.newParty.sun_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.newParty.dateadded = $filter('date')($scope.newParty.sun_end, "yyyy-MM-dd HH:mm:ss Z");
+			$scope.newParty.mon_start = $filter('date')($scope.newParty.mon_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.mon_end = $filter('date')($scope.newParty.mon_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.tue_start = $filter('date')($scope.newParty.tue_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.tue_end = $filter('date')($scope.newParty.tue_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.wed_start = $filter('date')($scope.newParty.wed_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.wed_end = $filter('date')($scope.newParty.wed_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.thu_start = $filter('date')($scope.newParty.thu_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.thu_end = $filter('date')($scope.newParty.thu_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.fri_start = $filter('date')($scope.newParty.fri_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.fri_end = $filter('date')($scope.newParty.fri_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.sat_start = $filter('date')($scope.newParty.sat_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.sat_end = $filter('date')($scope.newParty.sat_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.sun_start = $filter('date')($scope.newParty.sun_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.sun_end = $filter('date')($scope.newParty.sun_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.newParty.dateadded = $filter('date')($scope.newParty.sun_end, "yyyy-MM-dd HH:mm:ss");
 
 			$scope.items.$add($scope.newParty);
 	      	//resetObj();
@@ -195,21 +195,21 @@ angular.module('myApp', ['ngRoute','ui.bootstrap','firebase'])
 		$scope.options = {hstep: [1, 2, 3],mstep: [1, 5, 10, 15, 25, 30]};	
 
     	$scope.editItem = function() {
-			$scope.item.mon_start = $filter('date')($scope.item.mon_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.mon_end = $filter('date')($scope.item.mon_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.tue_start = $filter('date')($scope.item.tue_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.tue_end = $filter('date')($scope.item.tue_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.wed_start = $filter('date')($scope.item.wed_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.wed_end = $filter('date')($scope.item.wed_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.thu_start = $filter('date')($scope.item.thu_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.thu_end = $filter('date')($scope.item.thu_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.fri_start = $filter('date')($scope.item.fri_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.fri_end = $filter('date')($scope.item.fri_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.sat_start = $filter('date')($scope.item.sat_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.sat_end = $filter('date')($scope.item.sat_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.sun_start = $filter('date')($scope.item.sun_start, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.sun_end = $filter('date')($scope.item.sun_end, "yyyy-MM-dd HH:mm:ss Z");
-			$scope.item.dateadded = $filter('date')($scope.item.sun_end, "yyyy-MM-dd HH:mm:ss Z");    
+			$scope.item.mon_start = $filter('date')($scope.item.mon_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.mon_end = $filter('date')($scope.item.mon_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.tue_start = $filter('date')($scope.item.tue_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.tue_end = $filter('date')($scope.item.tue_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.wed_start = $filter('date')($scope.item.wed_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.wed_end = $filter('date')($scope.item.wed_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.thu_start = $filter('date')($scope.item.thu_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.thu_end = $filter('date')($scope.item.thu_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.fri_start = $filter('date')($scope.item.fri_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.fri_end = $filter('date')($scope.item.fri_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.sat_start = $filter('date')($scope.item.sat_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.sat_end = $filter('date')($scope.item.sat_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.sun_start = $filter('date')($scope.item.sun_start, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.sun_end = $filter('date')($scope.item.sun_end, "yyyy-MM-dd HH:mm:ss");
+			$scope.item.dateadded = $filter('date')($scope.item.sun_end, "yyyy-MM-dd HH:mm:ss");    
 
 			//when was the entry updated
 			$scope.item.dateupdated = new Date();
